@@ -77,9 +77,20 @@ function init(resultFromServer) {
     cityName.innerHTML = resultFromServer.name;
 
     humidityEle.innerHTML = 'Humidity level is ' + resultFromServer.main.humidity + '%';
+
+    weatherInfoPosition();
 }
 
+/**/
+function weatherInfoPosition() {
+    let weatherContainer = document.getElementById("weather-container");
+    let weatherContainerHeight = weatherContainer.clientHeight;
+    let weatherContainerWidth = weatherContainer.clientWidth;
 
+    weatherContainer.style.left = `calc(50% - ${weatherContainerWidth/2}px)`;
+    weatherContainer.style.top = `calc(50% - ${weatherContainerHeight/2}px)`;
+    weatherContainer.style.visibility = 'visible';
+}
 
 /*
 get search term input
