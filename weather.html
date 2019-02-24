@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="weather.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+
+    <div id="search-container">
+        <input class="search-control" type="text" placeholder="Enter city name or zipcode!" id="search-input">
+        <button class="search-control" id="searchBtn">Get weather details!</button>
+    </div>
+
+    <div id="weather-container">
+        <div id="weather-description">
+            <h1 id="city-name"></h1>
+            <div id="weather">
+                <div id="temperature"></div>
+                <div id="weather-description-header"></div>
+                <div>
+                    <img id="weather-icon">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="wind-speed" class="bottom-details"></div>
+            <div id="humidity" class="bottom-details"></div>
+        </div>
+    </div>
+
+    <script src="weather.js"></script>
+</body>
+</html>
