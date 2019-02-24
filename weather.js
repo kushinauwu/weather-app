@@ -34,17 +34,17 @@ function init(resultFromServer) {
     console.log(resultFromServer);
     switch (resultFromServer.weather[0].main) {
         case 'Thunderstorm':
-            document.body.style.backgroundImage = 'url("thunderstorm.jpg")';
+            document.body.style.backgroundImage = 'url("img/thunderstorm.jpg")';
             break;
         case 'Drizzle':
         case 'Rain':
-            document.body.style.backgroundImage = 'url("img/rain.jpg)';
+            document.body.style.backgroundImage = 'url("img/rain.jpg")';
             break;
         case 'Snow':
-            document.body.style.backgroundImage = 'url("img/snow.jpg)';
+            document.body.style.backgroundImage = 'url("img/snow.jpg")';
             break;
         case 'Atmosphere':
-            document.body.style.backgroundImage = 'url("img/atmosphere.jpg)';
+            document.body.style.backgroundImage = 'url("img/atmosphere.jpg")';
             break;
         case 'Clear':
             document.body.style.backgroundImage = 'url("img/sunny.jpg")';
@@ -53,18 +53,33 @@ function init(resultFromServer) {
             document.body.style.backgroundImage = 'url("img/cloudy.jpg")';
             break;
         default:
-            document.body.style.backgroundImage = 'url("img/default.jpg")';
             break;
 
     }
+
+    let weatherDescriptionHeader = document.getElementById('weather-description-header');
+    let temperatureEle = document.getElementById('temperature');
+    let windSpeed = document.getElementById('wind-speed');
+    let humidityEle = document.getElementById('humidity');
+    let cityName = document.getElementById('city-name');
+    let weatherIcon = document.getElementById('weather-icon');
+
+    //get weather details from the JSON element
+    weatherIcon.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
+
+    let resultDescription = resultFromServer.weather[0].description;
+    weatherDescriptionHeader.innerHTML = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
+
+    temperatureEle.innerHTML = Math.floor(resultFromServer.main.temp) + '&#176';
+
+    windSpeed.innerHTML = 'Winds at ' + Math.floor(resultFromServer.wind.speed) + 'm/s.';
+
+    cityName.innerHTML = resultFromServer.name;
+
+    humidityEle.innerHTML = 'Humidity level is ' + resultFromServer.main.humidity + '%';
 }
 
-let weatherDescriptionHeader = document.getElementById('weather-description-header');
-let temperature = document.getElementById('temperature');
-let windSpeed = document.getElementById('wind-speed');
-let humidity = document.getElementById('humidity');
-let cityName = document.getElementById('city-name');
-let weatherIcon = document.getElementById('weather-icon');
+
 
 /*
 get search term input
